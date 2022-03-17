@@ -119,16 +119,6 @@ const getTagsFromPropsList = (tagName, primaryAttributes, propsList) => {
             ) {
               primaryAttributeKey = lowerCaseAttributeKey;
             }
-
-            if(
-              primaryAttributes.indexOf(lowerCaseAttributeKey) !== -1 &&
-              !(
-                primaryAttributeKey === TAG_PROPERTIES.REL &&
-                tag[primaryAttributeKey].toLowerCase() === 'alterante'
-              ) ) {
-                primaryAttributeKey = lowerCaseAttributeKey;
-            }
-
             // Special case for innerHTML which doesn't work lowercased
             if (
               primaryAttributes.indexOf(attributeKey) !== -1 &&
@@ -201,7 +191,7 @@ const reducePropsToState = propsList => ({
   htmlAttributes: getAttributesFromPropsList(ATTRIBUTE_NAMES.HTML, propsList),
   linkTags: getTagsFromPropsList(
     TAG_NAMES.LINK,
-    [TAG_PROPERTIES.HREFLANG, TAG_PROPERTIES.REL, TAG_PROPERTIES.HREF],
+    [TAG_PROPERTIES.REL, TAG_PROPERTIES.HREFLANG],
     propsList
   ),
   metaTags: getTagsFromPropsList(
