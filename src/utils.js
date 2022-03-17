@@ -109,19 +109,19 @@ const getTagsFromPropsList = (tagName, primaryAttributes, propsList) => {
             const lowerCaseAttributeKey = attributeKey.toLowerCase();
 
             // Special rule with link tags, since rel and href are both primary tags, rel takes priority
-            if (
-              primaryAttributes.indexOf(lowerCaseAttributeKey) !== -1 &&
-              !(
-                primaryAttributeKey === TAG_PROPERTIES.REL &&
-                tag[primaryAttributeKey].toLowerCase() === 'canonical'
-              ) &&
-              !(
-                lowerCaseAttributeKey === TAG_PROPERTIES.REL &&
-                tag[lowerCaseAttributeKey].toLowerCase() === 'stylesheet'
-              )
-            ) {
-              primaryAttributeKey = lowerCaseAttributeKey;
-            }
+            // if (
+            //   primaryAttributes.indexOf(lowerCaseAttributeKey) !== -1 &&
+            //   !(
+            //     primaryAttributeKey === TAG_PROPERTIES.REL &&
+            //     tag[primaryAttributeKey].toLowerCase() === 'canonical'
+            //   ) &&
+            //   !(
+            //     lowerCaseAttributeKey === TAG_PROPERTIES.REL &&
+            //     tag[lowerCaseAttributeKey].toLowerCase() === 'stylesheet'
+            //   )
+            // ) {
+            //   primaryAttributeKey = lowerCaseAttributeKey;
+            // }
             // Special case for innerHTML which doesn't work lowercased
             if (
               primaryAttributes.indexOf(attributeKey) !== -1 &&
@@ -148,7 +148,7 @@ const getTagsFromPropsList = (tagName, primaryAttributes, propsList) => {
           }
 
           if (!approvedSeenTags[primaryAttributeKey][value]) {
-            instanceSeenTags[primaryAttributeKey][value] = true;
+            //instanceSeenTags[primaryAttributeKey][value] = true;
             return true;
           }
 
@@ -168,8 +168,8 @@ const getTagsFromPropsList = (tagName, primaryAttributes, propsList) => {
 
         approvedSeenTags[attributeKey] = tagUnion;
       }
-      console.log('Hello World', approvedSeenTags);
-      console.log('Hello World', approvedTags);
+      console.log('Hello World approvedSeenTags', approvedSeenTags);
+      console.log('Hello World approvedTags', approvedTags);
 
       return approvedTags;
     }, [])
