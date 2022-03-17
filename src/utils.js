@@ -124,7 +124,8 @@ const getTagsFromPropsList = (tagName, primaryAttributes, propsList) => {
               primaryAttributes.indexOf(attributeKey) !== -1 &&
               (attributeKey === TAG_PROPERTIES.INNER_HTML ||
                 attributeKey === TAG_PROPERTIES.CSS_TEXT ||
-                attributeKey === TAG_PROPERTIES.ITEM_PROP)
+                attributeKey === TAG_PROPERTIES.ITEM_PROP ||
+                attributeKey === TAG_PROPERTIES.HREFLANG)
             ) {
               primaryAttributeKey = attributeKey;
             }
