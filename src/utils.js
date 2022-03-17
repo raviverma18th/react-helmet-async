@@ -119,13 +119,22 @@ const getTagsFromPropsList = (tagName, primaryAttributes, propsList) => {
             ) {
               primaryAttributeKey = lowerCaseAttributeKey;
             }
+
+            if(
+              primaryAttributes.indexOf(lowerCaseAttributeKey) !== -1 &&
+              !(
+                primaryAttributeKey === TAG_PROPERTIES.HREFLANG &&
+                tag[primaryAttributeKey].toLowerCase() === 'alterante'
+              ) ) {
+                primaryAttributeKey = lowerCaseAttributeKey;
+            }
+
             // Special case for innerHTML which doesn't work lowercased
             if (
               primaryAttributes.indexOf(attributeKey) !== -1 &&
               (attributeKey === TAG_PROPERTIES.INNER_HTML ||
                 attributeKey === TAG_PROPERTIES.CSS_TEXT ||
-                attributeKey === TAG_PROPERTIES.ITEM_PROP ||
-                attributeKey === TAG_PROPERTIES.HREFLANG)
+                attributeKey === TAG_PROPERTIES.ITEM_PROP)
             ) {
               primaryAttributeKey = attributeKey;
             }
