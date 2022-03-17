@@ -102,6 +102,9 @@ const getTagsFromPropsList = (tagName, primaryAttributes, propsList) => {
           let primaryAttributeKey;
           const keys = Object.keys(tag);
           for (let i = 0; i < keys.length; i += 1) {
+
+            console.log('Hello World', tag, keys, i);
+
             const attributeKey = keys[i];
             const lowerCaseAttributeKey = attributeKey.toLowerCase();
 
@@ -110,7 +113,7 @@ const getTagsFromPropsList = (tagName, primaryAttributes, propsList) => {
               primaryAttributes.indexOf(lowerCaseAttributeKey) !== -1 &&
               !(
                 primaryAttributeKey === TAG_PROPERTIES.REL &&
-                (tag[primaryAttributeKey].toLowerCase() === 'canonical' || tag[primaryAttributeKey].toLowerCase() === 'alternate')
+                tag[primaryAttributeKey].toLowerCase() === 'canonical'
               ) &&
               !(
                 lowerCaseAttributeKey === TAG_PROPERTIES.REL &&
