@@ -123,7 +123,7 @@ const getTagsFromPropsList = (tagName, primaryAttributes, propsList) => {
             if(
               primaryAttributes.indexOf(lowerCaseAttributeKey) !== -1 &&
               !(
-                primaryAttributeKey === TAG_PROPERTIES.HREFLANG &&
+                primaryAttributeKey === TAG_PROPERTIES.REL &&
                 tag[primaryAttributeKey].toLowerCase() === 'alterante'
               ) ) {
                 primaryAttributeKey = lowerCaseAttributeKey;
