@@ -109,19 +109,23 @@ const getTagsFromPropsList = (tagName, primaryAttributes, propsList) => {
             const lowerCaseAttributeKey = attributeKey.toLowerCase();
 
             // Special rule with link tags, since rel and href are both primary tags, rel takes priority
-            // if (
-            //   primaryAttributes.indexOf(lowerCaseAttributeKey) !== -1 &&
-            //   !(
-            //     primaryAttributeKey === TAG_PROPERTIES.REL &&
-            //     tag[primaryAttributeKey].toLowerCase() === 'canonical'
-            //   ) &&
-            //   !(
-            //     lowerCaseAttributeKey === TAG_PROPERTIES.REL &&
-            //     tag[lowerCaseAttributeKey].toLowerCase() === 'stylesheet'
-            //   )
-            // ) {
-            //   primaryAttributeKey = lowerCaseAttributeKey;
-            // }
+            if (
+              primaryAttributes.indexOf(lowerCaseAttributeKey) !== -1 &&
+              !(
+                primaryAttributeKey === TAG_PROPERTIES.REL &&
+                tag[primaryAttributeKey].toLowerCase() === 'canonical'
+              ) &&
+              !(
+                lowerCaseAttributeKey === TAG_PROPERTIES.REL &&
+                tag[lowerCaseAttributeKey].toLowerCase() === 'stylesheet'
+              ) &&
+              !(
+                lowerCaseAttributeKey === TAG_PROPERTIES.REL &&
+                tag[lowerCaseAttributeKey].toLowerCase() === 'alternate'
+              )
+            ) {
+              primaryAttributeKey = lowerCaseAttributeKey;
+            }
             // Special case for innerHTML which doesn't work lowercased
             if (
               primaryAttributes.indexOf(attributeKey) !== -1 &&
@@ -149,7 +153,7 @@ const getTagsFromPropsList = (tagName, primaryAttributes, propsList) => {
 
           if (!approvedSeenTags[primaryAttributeKey][value]) {
             //instanceSeenTags[primaryAttributeKey][value] = true;
-            return true;
+            //return true;
           }
 
           return false;
