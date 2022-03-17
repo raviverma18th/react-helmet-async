@@ -168,6 +168,7 @@ const getTagsFromPropsList = (tagName, primaryAttributes, propsList) => {
 
         approvedSeenTags[attributeKey] = tagUnion;
       }
+      console.log('Hello World', approvedSeenTags);
       console.log('Hello World', approvedTags);
 
       return approvedTags;
