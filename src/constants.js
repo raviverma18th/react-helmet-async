@@ -9,6 +9,7 @@ export const TAG_PROPERTIES = {
   PROPERTY: 'property',
   REL: 'rel',
   SRC: 'src',
+  HREFLANG: 'hreflang',
 };
 
 export const ATTRIBUTE_NAMES = {

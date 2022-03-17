@@ -102,9 +102,6 @@ const getTagsFromPropsList = (tagName, primaryAttributes, propsList) => {
           let primaryAttributeKey;
           const keys = Object.keys(tag);
           for (let i = 0; i < keys.length; i += 1) {
-
-            console.log('Hello World', tag, keys, i);
-
             const attributeKey = keys[i];
             const lowerCaseAttributeKey = attributeKey.toLowerCase();
 
@@ -118,10 +115,6 @@ const getTagsFromPropsList = (tagName, primaryAttributes, propsList) => {
               !(
                 lowerCaseAttributeKey === TAG_PROPERTIES.REL &&
                 tag[lowerCaseAttributeKey].toLowerCase() === 'stylesheet'
-              ) &&
-              !(
-                lowerCaseAttributeKey === TAG_PROPERTIES.REL &&
-                tag[lowerCaseAttributeKey].toLowerCase() === 'alternate'
               )
             ) {
               primaryAttributeKey = lowerCaseAttributeKey;
@@ -152,8 +145,8 @@ const getTagsFromPropsList = (tagName, primaryAttributes, propsList) => {
           }
 
           if (!approvedSeenTags[primaryAttributeKey][value]) {
-            //instanceSeenTags[primaryAttributeKey][value] = true;
-            //return true;
+            instanceSeenTags[primaryAttributeKey][value] = true;
+            return true;
           }
 
           return false;
@@ -172,8 +165,6 @@ const getTagsFromPropsList = (tagName, primaryAttributes, propsList) => {
 
         approvedSeenTags[attributeKey] = tagUnion;
       }
-      console.log('Hello World approvedSeenTags', approvedSeenTags);
-      console.log('Hello World approvedTags', approvedTags);
 
       return approvedTags;
     }, [])
@@ -200,7 +191,7 @@ const reducePropsToState = propsList => ({
   htmlAttributes: getAttributesFromPropsList(ATTRIBUTE_NAMES.HTML, propsList),
   linkTags: getTagsFromPropsList(
     TAG_NAMES.LINK,
-    [TAG_PROPERTIES.REL, TAG_PROPERTIES.HREF],
+    [TAG_PROPERTIES.HREFLANG, TAG_PROPERTIES.REL, TAG_PROPERTIES.HREF],
     propsList
   ),
   metaTags: getTagsFromPropsList(
