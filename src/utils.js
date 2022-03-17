@@ -110,7 +110,7 @@ const getTagsFromPropsList = (tagName, primaryAttributes, propsList) => {
               primaryAttributes.indexOf(lowerCaseAttributeKey) !== -1 &&
               !(
                 primaryAttributeKey === TAG_PROPERTIES.REL &&
-                tag[primaryAttributeKey].toLowerCase() === 'canonical'
+                (tag[primaryAttributeKey].toLowerCase() === 'canonical' || tag[primaryAttributeKey].toLowerCase() === 'alternate')
               ) &&
               !(
                 lowerCaseAttributeKey === TAG_PROPERTIES.REL &&
